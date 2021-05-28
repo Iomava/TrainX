@@ -12,8 +12,13 @@ import com.flamecode.trainx.R
 import com.flamecode.trainx.databinding.FragmentIntroBinding
 import com.flamecode.trainx.easter.easteronClickLister
 import com.flamecode.trainx.easter.easteronLongClickLister
+import com.flamecode.trainx.extensions.isOnScreen
+import com.flamecode.trainx.fragments.model.IntroModel
+import com.flamecode.trainx.manager.moveTo
+import java.util.*
+import kotlin.concurrent.timerTask
 
-class IntroFragment : Fragment() {
+class IntroFragment : Fragment(), IntroModel {
 
     companion object{
 
@@ -38,20 +43,38 @@ class IntroFragment : Fragment() {
         binding = FragmentIntroBinding.inflate(inflater, container, false)
 
         val trainLink = binding?.trainLink
-        trainLink?.animate()?.
-        x(transitionX)?.
-        setStartDelay(delay)?.
-        duration = 2000
-
-        trainLink?.children?.forEach {
-
-            it.setOnClickListener(easteronClickLister(trainLink))
-            it.setOnLongClickListener(easteronLongClickLister(trainLink))
+        trainLink?.let {
+            addAnimation(trainLink)
+            checkVisibility(it)
         }
 
         return binding?.root
     }
 
+    override fun checkVisibility(trainLink: LinearLayout) {
 
+        Timer().scheduleAtFixedRate(timerTask {
+            if (!trainLink.children.first().isOnScreen()
+                && !trainLink.children.last().isOnScreen()){
+
+                moveTo(MainFragment(), parentFragmentManager)
+                cancel()
+            }
+        }, 1000, 500)
+    }
+
+    override fun addAnimation(trainLink: LinearLayout) {
+
+        trainLink.animate()?.
+        x(transitionX)?.
+        setStartDelay(delay)?.
+        duration = 2000
+
+        trainLink.children.forEach {
+
+            it.setOnClickListener(easteronClickLister(trainLink))
+            it.setOnLongClickListener(easteronLongClickLister(trainLink))
+        }
+    }
 
 }
