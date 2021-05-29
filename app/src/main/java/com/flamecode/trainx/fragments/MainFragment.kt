@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.transition.TransitionInflater
 import com.flamecode.trainx.R
-import com.flamecode.trainx.RecyclerAdapter
-import com.flamecode.trainx.databinding.FragmentIntroBinding
+import com.flamecode.trainx.RecyclerTicketAdapter
 import com.flamecode.trainx.databinding.FragmentMainBinding
 import com.flamecode.trainx.extensions.bounceAnim
 import com.flamecode.trainx.fragments.model.MainModel
@@ -35,7 +34,7 @@ class MainFragment : Fragment(), MainModel {
 
         val recyclerView = binding?.recyclerView
         val mockList = mockListTickets()
-        recyclerView?.adapter = RecyclerAdapter(mockList)
+        recyclerView?.adapter = RecyclerTicketAdapter(mockList)
         recyclerView?.layoutManager = LinearLayoutManager(context)
 
         val searchButton = binding?.searchButton

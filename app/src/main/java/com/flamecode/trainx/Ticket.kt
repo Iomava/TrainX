@@ -8,4 +8,14 @@ data class Ticket(
     val timeArrive : Time,
     val distance : Double,
     val price : Double
-)
+) {
+    constructor() : this(
+        "",
+        "",
+        "",
+        Time(0, 0, 0, 0),
+        Time(0, 0, 0, 0),
+        0.0,
+        0.0
+    )
+}

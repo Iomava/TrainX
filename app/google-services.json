@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "997195895677",
+    "project_id": "dronex-66b0d",
+    "storage_bucket": "dronex-66b0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997195895677:android:56e556e75e9d074ab73214",
+        "android_client_info": {
+          "package_name": "com.DroneX"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997195895677-8j56lvs1bcheo4jvi8pgoo2q0d9tj4sm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB35Nx328vP12pBvdAxuXtIJRWEnvQi08A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997195895677-8j56lvs1bcheo4jvi8pgoo2q0d9tj4sm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997195895677:android:01227e58423607ecb73214",
+        "android_client_info": {
+          "package_name": "com.flamecode.trainx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997195895677-8j56lvs1bcheo4jvi8pgoo2q0d9tj4sm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB35Nx328vP12pBvdAxuXtIJRWEnvQi08A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997195895677-8j56lvs1bcheo4jvi8pgoo2q0d9tj4sm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

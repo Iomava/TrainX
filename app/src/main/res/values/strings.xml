@@ -12,4 +12,6 @@
     <string name="price">PRICE:</string>
     <string name="_1_2">1.2 $</string>
     <string name="_15_32">15:32</string>
+    <string name="distance">DISTANCE:</string>
+    <string name="token_reward">TOKEN REWARD:</string>
 </resources>

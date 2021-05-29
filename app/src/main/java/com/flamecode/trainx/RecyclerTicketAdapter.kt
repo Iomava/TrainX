@@ -9,8 +9,9 @@ import android.widget.Space
 import androidx.recyclerview.widget.RecyclerView
 import com.flamecode.trainx.extensions.bounceAnim
 import com.flamecode.trainx.extensions.parseToString
+import com.flamecode.trainx.manager.ConfirmationDialogBuilder
 
-class RecyclerAdapter(private val tickets : List<Ticket>) : RecyclerView.Adapter<TicketViewHolder>() {
+class RecyclerTicketAdapter(private val tickets : List<Ticket>) : RecyclerView.Adapter<TicketViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
 
@@ -31,9 +32,12 @@ class RecyclerAdapter(private val tickets : List<Ticket>) : RecyclerView.Adapter
         holder.platform.text = ticket.platform
         holder.price.text = ticket.price.toString() + " $"
 
+        val confirmationDialogBuilder = ConfirmationDialogBuilder(context)
+
         holder.buyButton.setOnClickListener {
 
             it.bounceAnim()
+            confirmationDialogBuilder.show()
         }
 
         addSpaceBelowLastItem(position, context, holder)
