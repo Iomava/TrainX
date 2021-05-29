@@ -1,183 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="5dp"
-    android:background="@drawable/grey_round_rectangler">
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:id="@+id/fromLinear"
-        android:layout_width="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="@string/from"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/super_green"/>
-
-        <TextView
-            android:id="@+id/fromText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="@string/frankfurt_main_station"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/smooth_black"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/platformLinear"
-        app:layout_constraintTop_toBottomOf="@id/fromLinear"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="@string/platform"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/super_green"/>
-
-        <TextView
-            android:id="@+id/platform"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="12BC"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/smooth_black"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/toLinear"
-        android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/platformLinear"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="@string/to"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/super_green"/>
-
-        <TextView
-            android:id="@+id/toText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="@string/hamburg_12_station"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/smooth_black"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/leaveAtLinear"
-        android:layout_width="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toLinear"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="@string/leave_at"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/super_green"/>
-
-        <TextView
-            android:id="@+id/leaveAt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="12:32 pm"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/smooth_black"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/arriveAtPriceLinear"
-        android:layout_marginTop="5dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/leaveAtLinear"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="@string/arrive_at"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/super_green"/>
-
-        <TextView
-            android:id="@+id/arriveAt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="21sp"
-            android:text="15:32 pm"
-            android:fontFamily="@font/montserrat_bold"
-            android:textColor="@color/smooth_black"/>
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@drawable/grey_round_rectangler">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end">
+            android:id="@+id/fromLinear"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content">
 
             <TextView
-                android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="21sp"
-                android:text="PRICE: "
+                android:textSize="17sp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/from"
                 android:fontFamily="@font/montserrat_bold"
                 android:textColor="@color/super_green"/>
 
             <TextView
-                android:id="@+id/price"
+                android:id="@+id/fromText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="21sp"
-                android:text="1.2 $"
+                android:textSize="18sp"
+                android:text="@string/frankfurt_main_station"
                 android:fontFamily="@font/montserrat_bold"
                 android:textColor="@color/smooth_black"/>
 
         </LinearLayout>
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/platformLinear"
+            app:layout_constraintTop_toBottomOf="@id/fromLinear"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/buyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="@drawable/supergreen_round_rectangler"
-        android:fontFamily="@font/montserrat_extrabol"
-        android:text="@string/buy"
-        android:layout_marginTop="15dp"
-        android:textSize="21sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/arriveAtPriceLinear"
-        app:layout_constraintEnd_toEndOf="parent"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/platform"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/super_green"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/platform"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="12BC"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/smooth_black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/toLinear"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/platformLinear"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:text="@string/to"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/super_green"/>
+
+            <TextView
+                android:id="@+id/toText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/hamburg_12_station"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/smooth_black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/leaveAtLinear"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toLinear"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:text="@string/leave_at"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/super_green"/>
+
+            <TextView
+                android:id="@+id/leaveAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="12:32"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/smooth_black"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/arriveAtPriceLinear"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/leaveAtLinear"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="17sp"
+                android:text="@string/arrive_at"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/super_green"/>
+
+            <TextView
+                android:id="@+id/arriveAt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="@string/_15_32"
+                android:fontFamily="@font/montserrat_bold"
+                android:textColor="@color/smooth_black"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_gravity="end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:text="@string/price"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/super_green"/>
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="@string/_1_2"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/smooth_black"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="@drawable/supergreen_round_rectangler"
+            android:fontFamily="@font/montserrat_extrabol"
+            android:text="@string/buy"
+            android:layout_marginTop="15dp"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/arriveAtPriceLinear"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <Space
+       android:id="@+id/space"
+       android:layout_width="wrap_content"
+       android:layout_height="25dp" />
+
+</LinearLayout>

@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">TrainX</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+        <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="from">FROM: </string>
     <string name="to">TO: </string>
     <string name="frankfurt_main_station">Frankfurt Main Station</string>
     <string name="hamburg_12_station">Hamburg 12 Station</string>
-    <string name="platform">PLATFORM: </string>
-    <string name="leave_at">LEAVE AT: </string>
-    <string name="arrive_at">ARRIVE AT: </string>
+    <string name="platform">PLATFORM:</string>
+    <string name="leave_at">LEAVE AT:</string>
+    <string name="arrive_at">ARRIVE AT:</string>
     <string name="buy">Buy</string>
+    <string name="price">PRICE:</string>
+    <string name="_1_2">1.2 $</string>
+    <string name="_15_32">15:32</string>
 </resources>

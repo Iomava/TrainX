@@ -14,3 +14,16 @@ fun View.isOnScreen() : Boolean{
     }
     return screen?.let { actualPosition.intersect(it) } == true
 }
+
+fun View.bounceAnim() {
+
+    fun reverseAnim(){
+
+        animate().scaleX(1f).scaleY(1f).duration = 300
+    }
+
+    animate().scaleX(1.15f).scaleY(1.15f).setDuration(300)
+        .withEndAction {
+            reverseAnim()
+        }
+}

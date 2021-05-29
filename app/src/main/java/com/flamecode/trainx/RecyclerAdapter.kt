@@ -1,20 +1,62 @@
 package com.flamecode.trainx
 
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Space
 import androidx.recyclerview.widget.RecyclerView
+import com.flamecode.trainx.extensions.bounceAnim
+import com.flamecode.trainx.extensions.parseToString
 
 class RecyclerAdapter(private val tickets : List<Ticket>) : RecyclerView.Adapter<TicketViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
 
-        TODO("Not yet implemented")
+        val context = parent.context
+        val inflater = LayoutInflater.from(context)
+        val ticketView = inflater.inflate(R.layout.ticket, parent, false)
+        return TicketViewHolder(ticketView)
     }
 
     override fun onBindViewHolder(holder: TicketViewHolder, position: Int) {
-        TODO("Not yet implemented")
+
+        val ticket = tickets[position]
+        val context = holder.arriveAt.context
+        holder.arriveAt.text = ticket.timeArrive.parseToString()
+        holder.leaveAt.text = ticket.timeLeave.parseToString()
+        holder.fromText.text = ticket.startDestination
+        holder.toText.text = ticket.endDestination
+        holder.platform.text = ticket.platform
+        holder.price.text = ticket.price.toString() + " $"
+
+        holder.buyButton.setOnClickListener {
+
+            it.bounceAnim()
+        }
+
+        addSpaceBelowLastItem(position, context, holder)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+    private fun addSpaceBelowLastItem(
+        position: Int,
+        context: Context?,
+        holder: TicketViewHolder
+    ) {
+
+        if (position == itemCount - 1) {
+
+            for (i in 0..5) {
+
+                val button = Button(context)
+                button.setText("TEST")
+                button.visibility = View.INVISIBLE
+                holder.main.addView(button)
+            }
+        }
     }
+
+    override fun getItemCount(): Int = tickets.size
+
 }
