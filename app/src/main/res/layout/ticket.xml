@@ -34,6 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:lines="1"
                 android:text="@string/frankfurt_main_station"
                 android:fontFamily="@font/montserrat_bold"
                 android:textColor="@color/smooth_black"/>
@@ -61,6 +62,7 @@
                 android:id="@+id/platform"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:lines="1"
                 android:textSize="18sp"
                 android:text="12BC"
                 android:fontFamily="@font/montserrat_bold"
@@ -88,6 +90,7 @@
             <TextView
                 android:id="@+id/toText"
                 android:layout_width="wrap_content"
+                android:lines="1"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:text="@string/hamburg_12_station"
@@ -115,6 +118,7 @@
 
             <TextView
                 android:id="@+id/leaveAt"
+                android:lines="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
@@ -145,6 +149,7 @@
                 android:id="@+id/arriveAt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:lines="1"
                 android:textSize="18sp"
                 android:text="@string/_15_32"
                 android:fontFamily="@font/montserrat_bold"
@@ -168,6 +173,7 @@
                 <TextView
                     android:id="@+id/price"
                     android:layout_width="wrap_content"
+                    android:lines="1"
                     android:layout_height="wrap_content"
                     android:textSize="18sp"
                     android:text="@string/_1_2"

@@ -26,7 +26,7 @@ class IntroFragment : Fragment(), IntroModel {
         const val delay = 250L
     }
 
-    var binding : FragmentIntroBinding? = null
+    private var binding : FragmentIntroBinding? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

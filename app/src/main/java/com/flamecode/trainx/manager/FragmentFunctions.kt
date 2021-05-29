@@ -12,3 +12,10 @@ fun moveTo(newFragment: Fragment, fragmentManager: FragmentManager){
         .add(containerViewID, newFragment)
         .commit()
 }
+
+fun removeFragment(removeFragment: Fragment, fragmentManager: FragmentManager){
+
+    fragmentManager.beginTransaction()
+        .remove(removeFragment)
+        .commit()
+}

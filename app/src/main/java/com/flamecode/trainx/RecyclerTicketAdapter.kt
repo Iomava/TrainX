@@ -54,7 +54,7 @@ class RecyclerTicketAdapter(private val tickets : List<Ticket>) : RecyclerView.A
             for (i in 0..5) {
 
                 val button = Button(context)
-                button.setText("TEST")
+                button.text = context?.getString(R.string.test)
                 button.visibility = View.INVISIBLE
                 holder.main.addView(button)
             }
