@@ -5,9 +5,6 @@ import android.view.View
 
 fun View.isOnScreen() : Boolean{
 
-//    if (isShown) {
-//        return false
-//    }
     val actualPosition = Rect()
     getGlobalVisibleRect(actualPosition)
     val screen = screenWidth()?.let {

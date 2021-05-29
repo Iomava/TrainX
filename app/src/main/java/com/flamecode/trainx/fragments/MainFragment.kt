@@ -30,6 +30,8 @@ class MainFragment : Fragment(), MainModel {
 
         binding = FragmentMainBinding.inflate(inflater, container, false)
 
+        val recyclerView = binding?.recyclerView
+        recyclerView?.adapter = // TODO
 
         return binding?.root
     }
