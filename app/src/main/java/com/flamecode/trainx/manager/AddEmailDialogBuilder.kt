@@ -16,7 +16,7 @@ import es.dmoral.toasty.Toasty
 class AddEmailDialogBuilder(
     private val context: Context,
     private val ticket: Ticket,
-    private val dialog: AlertDialog.Builder
+    private val dialog: AlertDialog
 ) {
 
     fun show(){
@@ -30,15 +30,15 @@ class AddEmailDialogBuilder(
         val sendToken = view.findViewById<Button>(R.id.sendToken)
 
         setUpCloseListenerDialog(dialog, context)
-        setClickListerForSendTokenButton(sendToken, emailAddress, context)
+        val actualDialog = createAlertDialog(dialog, view)
+        setClickListerForSendTokenButton(sendToken, emailAddress, actualDialog)
 
-        createAlertDialog(dialog, view)
     }
 
     private fun setClickListerForSendTokenButton(
         sendToken: Button,
         emailAddress: EditText,
-        context: Context
+        actualDialog: AlertDialog?
     ) {
 
         sendToken.setOnClickListener {
@@ -47,11 +47,11 @@ class AddEmailDialogBuilder(
             val email = emailAddress.text.toString().trim()
             if (email.isEmailValid()) {
 
-                sendTokenToAnAddress(ticket, email, dialog)
-                Toasty.success(context, "You will receive the ticket on email").show()
+                sendTokenToAnAddress(ticket, email, dialog, actualDialog)
+
             } else {
 
-                Toasty.error(context, "Email is bad formatted").show()
+                Toasty.error(dialog.context, "Email is bad formatted").show()
             }
         }
     }
@@ -63,7 +63,7 @@ class AddEmailDialogBuilder(
 
         dialog.setOnDismissListener {
 
-            Toasty.error(context, "Transaction failed").show()
+    //        Toasty.error(context, "Transaction failed").show()
         }
 
         dialog.setOnCancelListener {

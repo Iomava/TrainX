@@ -34,14 +34,15 @@ class ConfirmationDialogBuilder(private val ticket : Ticket, private val context
 
         setUpCloseListenerDialog(dialog, context)
 
-        val addEmailDialogBuilder = AddEmailDialogBuilder(context, ticket, dialog)
+        val alertDialogCreated = createAlertDialog(dialog, view)
+
+        val addEmailDialogBuilder =
+            alertDialogCreated?.let { AddEmailDialogBuilder(context, ticket, it) }
         buyButton.setOnClickListener {
 
             it.bounceAnim()
-            addEmailDialogBuilder.show()
+            addEmailDialogBuilder?.show()
         }
-
-        createAlertDialog(dialog, view)
     }
 
     private fun setUpCloseListenerDialog(
@@ -51,7 +52,7 @@ class ConfirmationDialogBuilder(private val ticket : Ticket, private val context
 
         dialog.setOnDismissListener {
 
-            Toasty.warning(context, "Transaction was stopped").show()
+           // Toasty.warning(context, "Transaction was stopped").show()
         }
         dialog.setOnCancelListener {
 

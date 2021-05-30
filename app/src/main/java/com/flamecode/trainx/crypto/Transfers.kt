@@ -20,13 +20,24 @@ import kotlin.concurrent.thread
 
 const val baseURL = "http://192.168.0.110:8080"
 
-fun sendTokenToAnAddress(ticket: Ticket, email: String, dialog: AlertDialog.Builder) {
+fun sendTokenToAnAddress(
+    ticket: Ticket,
+    email: String,
+    dialog: AlertDialog,
+    actualDialog: AlertDialog?
+) {
 
     try {
         thread {
             val gson = Gson()
             ticket.email = email
             val json = gson.toJson(ticket)
+
+            val mainHandler = dialog.context.mainLooper?.let { Handler(it) }
+            val runnable = Runnable {
+                Toasty.warning(dialog.context, "Your payment is processing...").show()
+            }
+            mainHandler?.post(runnable)
 
             val client = OkHttpClient()
             val request = Request.Builder()
@@ -35,19 +46,36 @@ fun sendTokenToAnAddress(ticket: Ticket, email: String, dialog: AlertDialog.Buil
                 .post(json.toRequestBody())
                 .build()
 
-            val response = client.newCall(request).execute()
-            val body = response.body
+            val newCall = client.newCall(request)
+            val response = newCall.execute()
+
+            if (response.isSuccessful) {
+
+                val runnableIsSuccessful = Runnable {
+                    Toasty.success(dialog.context, "You will receive the ticket on email").show()
+                }
+                mainHandler?.post(runnableIsSuccessful)
+
+                newCall.cancel()
+                dialog.cancel()
+                actualDialog?.cancel()
+            } else {
+
+                displayError(dialog, actualDialog)
+                dialog.cancel()
+                actualDialog?.cancel()
+            }
+
         }
     } catch (er: Error) {
 
-        displayError(dialog)
-
+        displayError(dialog, actualDialog)
     }
 }
 
-private fun displayError(dialog: AlertDialog.Builder) {
+private fun displayError(dialog: AlertDialog, actualDialog: AlertDialog?) {
 
-    val mainHandler = dialog.context?.mainLooper?.let { Handler(it) };
+    val mainHandler = dialog.context.mainLooper?.let { Handler(it) }
 
     val runnable = Runnable {
 
@@ -55,4 +83,6 @@ private fun displayError(dialog: AlertDialog.Builder) {
 
     }
     mainHandler?.post(runnable)
+    dialog.cancel()
+    actualDialog?.cancel()
 }

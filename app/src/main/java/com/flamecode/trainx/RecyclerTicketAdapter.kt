@@ -13,7 +13,7 @@ import com.flamecode.trainx.extensions.round
 import com.flamecode.trainx.manager.ConfirmationDialogBuilder
 import kotlin.math.round
 
-class RecyclerTicketAdapter(private val tickets : List<Ticket>) : RecyclerView.Adapter<TicketViewHolder>() {
+class RecyclerTicketAdapter(var tickets : MutableList<Ticket>) : RecyclerView.Adapter<TicketViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketViewHolder {
 

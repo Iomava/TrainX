@@ -12,6 +12,7 @@ import androidx.transition.TransitionInflater
 import com.flamecode.trainx.R
 import com.flamecode.trainx.RecyclerTicketAdapter
 import com.flamecode.trainx.Ticket
+import com.flamecode.trainx.crypto.baseURL
 import com.flamecode.trainx.databinding.FragmentMainBinding
 import com.flamecode.trainx.extensions.bounceAnim
 import com.flamecode.trainx.fragments.model.MainModel
@@ -26,6 +27,7 @@ import kotlin.concurrent.thread
 class MainFragment : Fragment(), MainModel {
 
     private var binding: FragmentMainBinding? = null
+    lateinit var recyclerTicketAdapter: RecyclerTicketAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +72,7 @@ class MainFragment : Fragment(), MainModel {
 
         val client = OkHttpClient()
         val request = Request.Builder()
-            .url("http://192.168.0.110:8080/train/tickets?startDest=Bucuresti&stopDest=Gara Onesti")
+            .url("$baseURL/train/tickets?startDest=Bucuresti&stopDest=Gara Onesti")
             .get()
             .build()
 
@@ -87,7 +89,8 @@ class MainFragment : Fragment(), MainModel {
 
                val runnable =  Runnable {
 
-                   recyclerView?.adapter = RecyclerTicketAdapter(list)
+                   recyclerTicketAdapter = RecyclerTicketAdapter(list.toMutableList())
+                   recyclerView?.adapter = recyclerTicketAdapter
                    recyclerView?.layoutManager = LinearLayoutManager(context)
                 }
                 mainHandler?.post(runnable)
@@ -142,11 +145,9 @@ class MainFragment : Fragment(), MainModel {
     }
 
     override fun search(startDestination: String, endDestination: String, searchItem: View) {
+        
+        loadData(startDestination, endDestination, recyclerTicketAdapter)
 
-        searchItem.setOnClickListener {
-
-            it.bounceAnim()
-        }
     }
 
     override fun showLoading(icon: View) {
@@ -158,7 +159,33 @@ class MainFragment : Fragment(), MainModel {
     }
 
 
-    override fun loadData() {
-        TODO("Not yet implemented")
+    override fun loadData(startDest : String, stopDest : String, adapter : RecyclerTicketAdapter) {
+
+        val client = OkHttpClient()
+        val request = Request.Builder()
+            .url("$baseURL/train/tickets?startDest=$startDest&stopDest=$stopDest")
+            .get()
+            .build()
+
+        try {
+
+            thread {
+
+                val response = client.newCall(request).execute()
+                val body = response.body?.string()
+                val gson = Gson()
+                val list = gson.fromJson(body, Array<Ticket>::class.java).toList()
+
+                val mainHandler = context?.mainLooper?.let { Handler(it) };
+
+                val runnable =  Runnable {
+
+                    adapter.tickets = list.toMutableList()
+                    adapter.notifyDataSetChanged()
+                }
+                mainHandler?.post(runnable)
+            }
+        } catch (er: Error) {
+        }
     }
 }
