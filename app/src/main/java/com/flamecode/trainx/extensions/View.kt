@@ -18,6 +18,9 @@ fun View.isOnScreen() : Boolean{
     return screen?.let { actualPosition.intersect(it) } == true
 }
 
+/**
+ * Create an bounce animation
+ */
 fun View.bounceAnim() {
 
     fun reverseAnim(){

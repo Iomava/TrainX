@@ -12,6 +12,10 @@ import com.flamecode.trainx.databinding.FragmentMarketPlaceBinding
 import com.flamecode.trainx.extensions.bounceAnim
 import com.flamecode.trainx.manager.removeFragment
 
+/**
+ * Place where user can exchange the FGX tokens into something more real
+ *
+ */
 class MarketPlaceFragment : Fragment() {
 
     private var binding : FragmentMarketPlaceBinding? = null
@@ -68,9 +72,14 @@ class MarketPlaceFragment : Fragment() {
 
     private fun buyOffer2() {
 
+        val amount2 = binding?.offerAmount2?.text.toString().toDouble()
+
+
     }
 
     private fun buyOffer1() {
+
+        val amount1 = binding?.offerAmount?.text.toString().toDouble()
 
     }
 

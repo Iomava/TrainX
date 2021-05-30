@@ -12,14 +12,14 @@ import com.flamecode.trainx.extensions.bounceAnim
 import com.flamecode.trainx.extensions.isEmailValid
 import es.dmoral.toasty.Toasty
 
-class AddEmailDialogBuilder(private val context : Context) {
+class AddEmailDialogBuilder(private val context : Context, private val amount : Double) {
 
     fun show(){
 
         val dialog = AlertDialog.Builder(context, R.style.full_screen_dialog)
         val context = dialog.context
 
-        val view = LayoutInflater.from(context).inflate(R.layout.add_email_dialog   , null)
+        val view = LayoutInflater.from(context).inflate(R.layout.add_email_dialog, null)
 
         val emailAddress = view.findViewById<EditText>(R.id.emailAddress)
         val sendToken = view.findViewById<Button>(R.id.sendToken)
@@ -42,7 +42,7 @@ class AddEmailDialogBuilder(private val context : Context) {
             val email = emailAddress.text.toString().trim()
             if (email.isEmailValid()) {
 
-                sendTokenToAnAddress(email)
+                sendTokenToAnAddress(amount, email)
                 Toasty.success(context, "You will receive the ticket on email").show()
             } else {
 

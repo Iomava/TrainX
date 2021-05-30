@@ -5,6 +5,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import com.flamecode.trainx.R
 import com.flamecode.trainx.extensions.bounceAnim
 import es.dmoral.toasty.Toasty
@@ -19,10 +20,13 @@ class ConfirmationDialogBuilder(private val context : Context) {
         val view = LayoutInflater.from(context).inflate(R.layout.confirmation_dialog, null)
 
         val buyButton = view.findViewById<Button>(R.id.buyButton)
+        val amountOfToken = view.findViewById<TextView>(R.id.token)
+
+        val amount = amountOfToken.text.toString().trim().toDouble()
 
         setUpCloseListenerDialog(dialog, context)
 
-        val addEmailDialogBuilder = AddEmailDialogBuilder(context)
+        val addEmailDialogBuilder = AddEmailDialogBuilder(context, amount)
         buyButton.setOnClickListener {
 
             it.bounceAnim()

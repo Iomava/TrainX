@@ -5,7 +5,7 @@ import com.flamecode.trainx.R
 import java.lang.StringBuilder
 
 /**
- * Get amount of
+ * Get amount of FGX from a email address or wallet address
  *
  */
 fun getAmountOfFGX(amount: TextView?, email : String, wallet : String){

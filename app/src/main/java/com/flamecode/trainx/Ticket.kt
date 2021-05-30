@@ -7,7 +7,8 @@ data class Ticket(
     val timeLeave : Time,
     val timeArrive : Time,
     val distance : Double,
-    val price : Double
+    val price : Double,
+    val rewardToken : Double
 ) {
     constructor() : this(
         "",
@@ -15,6 +16,7 @@ data class Ticket(
         "",
         Time(0, 0, 0, 0),
         Time(0, 0, 0, 0),
+        0.0,
         0.0,
         0.0
     )
