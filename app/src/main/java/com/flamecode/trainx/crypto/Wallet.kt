@@ -8,6 +8,7 @@ import java.lang.StringBuilder
  * Get amount of FGX from a email address or wallet address
  *
  */
+
 fun getAmountOfFGX(amount: TextView?, email : String, wallet : String){
 
     if (amount != null) {

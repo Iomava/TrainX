@@ -7,12 +7,17 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import com.flamecode.trainx.R
+import com.flamecode.trainx.Ticket
 import com.flamecode.trainx.crypto.sendTokenToAnAddress
 import com.flamecode.trainx.extensions.bounceAnim
 import com.flamecode.trainx.extensions.isEmailValid
 import es.dmoral.toasty.Toasty
 
-class AddEmailDialogBuilder(private val context : Context, private val amount : Double) {
+class AddEmailDialogBuilder(
+    private val context: Context,
+    private val ticket: Ticket,
+    private val dialog: AlertDialog.Builder
+) {
 
     fun show(){
 
@@ -42,7 +47,7 @@ class AddEmailDialogBuilder(private val context : Context, private val amount : 
             val email = emailAddress.text.toString().trim()
             if (email.isEmailValid()) {
 
-                sendTokenToAnAddress(amount, email)
+                sendTokenToAnAddress(ticket, email, dialog)
                 Toasty.success(context, "You will receive the ticket on email").show()
             } else {
 
@@ -63,7 +68,7 @@ class AddEmailDialogBuilder(private val context : Context, private val amount : 
 
         dialog.setOnCancelListener {
 
-            Toasty.error(context, "Transaction failed").show()
+       //     Toasty.error(context, "Transaction failed").show()
         }
     }
 

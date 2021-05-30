@@ -9,7 +9,9 @@ import android.widget.Space
 import androidx.recyclerview.widget.RecyclerView
 import com.flamecode.trainx.extensions.bounceAnim
 import com.flamecode.trainx.extensions.parseToString
+import com.flamecode.trainx.extensions.round
 import com.flamecode.trainx.manager.ConfirmationDialogBuilder
+import kotlin.math.round
 
 class RecyclerTicketAdapter(private val tickets : List<Ticket>) : RecyclerView.Adapter<TicketViewHolder>() {
 
@@ -30,9 +32,9 @@ class RecyclerTicketAdapter(private val tickets : List<Ticket>) : RecyclerView.A
         holder.fromText.text = ticket.startDestination
         holder.toText.text = ticket.endDestination
         holder.platform.text = ticket.platform
-        holder.price.text = ticket.price.toString() + " $"
+        holder.price.text = ticket.price.round(2).toString() + " $"
 
-        val confirmationDialogBuilder = ConfirmationDialogBuilder(context)
+        val confirmationDialogBuilder = ConfirmationDialogBuilder(ticket, context)
 
         holder.buyButton.setOnClickListener {
 
